@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-var letterArray = ["a", "b", "c", "d"]
+var letterArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
 var specialArray = ["!", "@", "$", "%", "`", "&", "$", "*"]
 var numberArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 var finalArray = []
@@ -35,6 +35,7 @@ function Uppers() {
 
 
 function writePassword() {
+  finalArray = []
   function generatePassword() { 
     length = 0
     while (length < 8 || length >128) {
@@ -44,22 +45,30 @@ function writePassword() {
     }
     }
 
-    
     var special = specials()
     var number = numbers()
     var letter = letters()
     var upper = Uppers()
     
-
-
-    if (letter == "yes" && special == "yes") {
-      for (i = 0; i < length/3 ; i++) {
-        finalArray.unshift(letterArray[Math.floor(Math.random()*4)])
-        // finalArray.unshift(specialArray[Math.floor(Math.random()*4)])
-        // finalArray.unshift(numberArray[Math.floor(Math.random()*4)])
-      }}
+    if (special == "yes" && number == "yes" && letter == "yes") {
+      for (var i = 0; i < length/3 ; i++) {
+        finalArray.unshift(specialArray[Math.floor(Math.random()*8)])
+    }
     
-
+      for(var i = 0; i < length/3; i++){
+        finalArray.unshift(numberArray[Math.floor(Math.random()*10)])
+    }
+    
+      for(var i = 0; i < length/3; i++){
+        finalArray.unshift(letterArray[Math.floor(Math.random()*4)])
+      }
+    if(length % 2 == 0){
+      finalArray.pop()
+    }}
+    
+  
+  
+       
   return finalArray
   }
   var password = generatePassword();
