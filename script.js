@@ -1,14 +1,15 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-var letterArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i"]
-var specialArray = ["!", "@", "$", "%", "`", "&", "$", "*"]
+var letterArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
+var specialArray = ["!", "@", "$", "%", "`", "&", "$", "*", "/", "-"]
 var numberArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+var upperLetterArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 var finalArray = []
 
 
 function letters() {
-  var wantletter = prompt("Would you like your password to contain letters?") 
+  var wantletter = prompt("Would you like your password to contain lowercase letters?") 
   return wantletter   
 }
 
@@ -45,32 +46,31 @@ function writePassword() {
     }
     }
 
+    
     var special = specials()
     var number = numbers()
     var letter = letters()
     var upper = Uppers()
-    
-    if (special == "yes" && number == "yes" && letter == "yes") {
-      for (var i = 0; i < length/3 ; i++) {
-        finalArray.unshift(specialArray[Math.floor(Math.random()*8)])
-    }
-    
-      for(var i = 0; i < length/3; i++){
+
+    while (finalArray.length < length) {
+      if (special == "yes") {
+        finalArray.unshift(specialArray[Math.floor(Math.random()*10)])
+      }if (number == "yes") {
         finalArray.unshift(numberArray[Math.floor(Math.random()*10)])
+      }if (letter == "yes") {
+        finalArray.unshift(letterArray[Math.floor(Math.random()*10)])
+      }if (upper == "yes") {
+        finalArray.unshift(upperLetterArray[Math.floor(Math.random()*10)])
+      }
     }
     
-      for(var i = 0; i < length/3; i++){
-        finalArray.unshift(letterArray[Math.floor(Math.random()*4)])
-      }
-    if(length % 2 == 0){
-      finalArray.pop()
-    }}
+
     
+    finalArray.length = length
+    finalArrayString = finalArray.toString()
+  return finalArrayString}
+
   
-  
-       
-  return finalArray
-  }
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
