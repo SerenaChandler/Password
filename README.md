@@ -14,7 +14,7 @@ for this assignment we were tasked with making a password generator.
 
 ![image](passwordImage.png)
 
-## code snippet
+## code snippet (how the funtion takes in and responds to user input)
 ```Javascript
     
 function writePassword() {

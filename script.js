@@ -7,7 +7,7 @@ var numberArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 var upperLetterArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 var finalArray = []
 
-
+// these funtions take in user input
 function letters() {
   var wantletter = prompt("Would you like your password to contain lowercase letters?") 
   return wantletter   
@@ -36,17 +36,18 @@ function Uppers() {
 
 
 function writePassword() {
+  // finalArray is made blank here to reset the password if another one is requested
   finalArray = []
   function generatePassword() { 
     length = 0
     while (length < 8 || length >128) {
     var length = prompt("how long do you want your password to be? Please select bewteen 8 and 120 characters")
     if (length < 8 || length > 128 ) {
-      window.alert("please enter a number between 8 and 120")
+      window.alert("please enter a number between 8 and 128")
     }
     }
 
-    
+    // the functions from earlier are assigned to a new variable and used to check what to add to the password
     var special = specials()
     var number = numbers()
     var letter = letters()
@@ -65,7 +66,7 @@ function writePassword() {
     }
     
 
-    
+    // used .join("") to prevent the password from also using the commas from the array
     finalArray.length = length
     finalArrayString = finalArray.join("")
   return finalArrayString}
