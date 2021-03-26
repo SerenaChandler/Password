@@ -67,7 +67,7 @@ function writePassword() {
 
     
     finalArray.length = length
-    finalArrayString = finalArray.toString()
+    finalArrayString = finalArray.join("")
   return finalArrayString}
 
   
